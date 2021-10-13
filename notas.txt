@@ -1,0 +1,392 @@
+Python es un lenguaje de alto nivel, es de tipado dinamico y fuerte, orientado a objetos y es interpretado.
+
+Se recomienda poner una instruccion por linea, si quieres poner 2 instrucciones en una sola linea es necesario poner ;
+
+TIPOS DE DATOS
+
+Numericos: int, float y complejos
+Texto-----las comillas pueden llevar comilla simple, doble y triple
+Booleano: true o false
+
+------------------------------------------------------------------------------------
+
+Tiene los operadores comunes y solo se agregan los especiales
+
+IS 
+IS NOT 
+IN 
+NOT IN 
+
+------------------------------------------------------------------------------------
+nombre="Jorge"
+print(type(nombre))
+
+num1=1
+num2=2
+
+if(num1>num2):
+    print("es mayor")
+else:
+    print("No es mayor")
+------------------------------------------------------------------------------------
+FUNCIONES 
+
+def nombre_funcion(): 
+
+def funcion(a,b):
+      suma=a+b
+      print(suma)
+
+funcion(3,4)
+------------------------------------------------------------------------------------
+LISTAS
+
+Es como los arrays, pero estas nos permiten guardar diferentes tipos de datos y no solo una.
+
+Se pueden expandir dinamicamente añadiendo nuevo elementos.
+
+nombreLista=[elem1,elem2,elem3]
+
+----------------------------------
+
+Para acceder a una porcion de la lista:
+
+nombres=["Jorge","Sebas","Baños"]
+
+print(nombres[0:1])
+
+---------------------------------
+Para agregar al final de la lista se utiliza la funcion append
+
+nombres.append("Mario")
+--------------------------------
+Para insertar en cualquier parte de la lista:
+
+nombre.insert(2,"Yare")                --->En este caso inserta en el indice 2
+--------------------------------
+Para concatenar listas:
+
+nombre.extend(["Karla","Alexia"])
+-------------------------------
+Para que te devuelva el indice de un elemento de la lista:
+
+nombres.index("Jorge")
+-------------------------------
+Para saber si un elemento está en la lista:
+
+"Pepe" in nombres     ->>> devuelve true o false 
+-------------------------------
+Para eliminar elementos se usa:
+
+nombres.remove("Jorge")
+-------------------------------
+Para eliminar el ultimo elemento de la lista:
+
+nombres.pop();
+
+-------------------------------
+Hay operadores que al trabajar con listas el + concatena listas y el * repite la lista las veces por la que lo multiplique
+
+nombreLista=[elem1,elem2,elem3] * 3
+----------------------------------------------------------------
+TUPLAS
+
+Son listas inmutables(que no cambia) es decir que no se puede modificar despues de su creación.
+No se puede añadir ni eliminar.
+
+Permite extraer porciones de la lista(no lo modificamos solo lo obtenemos)
+
+si permiten comprobar si un elemento está dentro de una tupla.
+
+Son mas rapidas que las listas, ocupan menos espacio, formatean strings y pueden usarse como claves en un diccionario.
+
+
+----------------------------------------------------------------
+nombreLista=(elem1,elem2,elem3)
+
+es como la lista pero con parentesis
+
+para acceder a los elementos es igual que en el la lista nombre[Lista1]
+-----------------------------------------------------------------
+CONVERTIR TUPLA A LISTA Y VICEVERSA
+
+miLista=list(miTupla)
+
+miTupla=tuple(miLista)
+-----------------------------------------------------------
+SABER SI UN ELEMENTO ESTA EN UA TUPLA 
+
+"Juan" in miTupla     ----------> devuelve true o false 
+----------------------------------------------------------
+COUNT 
+
+Te dice cuantos elementos de los que buscamos estan en una tupla 
+
+miTupla.count("Jorge")  ---------> devuelve el numero de veces que Jorge está en la tupla
+----------------------------------------------------------
+LEN
+
+Da la longitud de una tupla.
+
+len(miTupla)
+----------------------------------------------------------
+TUPLAS UNITARIAS
+
+Son tuplas con un solo elemento 
+
+miTupla=("Juan",)
+------------------------------------------------------------
+DESEMPAQUETADO DE TUPLA
+
+Permiter asignar a variables elementos de la tupla.
+
+miTupla=("Jorge",1,2,3)
+nombre, num1, num2, num3=miTupla;
+----------------------------------------------------------------------------------------------------------------------------
+
+DICCIONARIOS
+
+Estructura de datos que nos permite alamacenar valores de diferente tipo e incluso listas y otros dicionarios.
+
+Los datos se almacenan asociados a una clave de tal forma que se crea una asociacion de tipo clave:valor para cada elemento almacenado.
+
+Los elementos no estan ordenados, el orden es indiferente a la hora de almacenar info en un diccionario.
+
+miDiccionario{"Alemania":"Berlin", "Mexico":"CDMX", "Francia":"Paris"}
+
+Si se quiere ver la capital de un pais:
+
+print(miDiccionario["Francia"])   --------> Esto devolvera "Paris"
+----------------------------------------------------------------------
+AGREGAR ELEMENTO A UN DICCIONARIO 
+
+miDiccionario["Italia"]="Roma"
+----------------------------------------------------------------------
+MODIFICAR DICCIONARIO 
+
+Solo hay que sobreecribir el valor anterior siempre y cuando le des la misma clave
+----------------------------------------------------------------------
+ELIMINAR DE UN DICCIONARIO 
+
+del miDiccionario["Mexico"]
+
+Solo hay que dar la clave 
+----------------------------------------------------------------------
+ASIGNAR UNA TUPLA A LAS CLAVES DE UN DICCIONARIO 
+
+miTupla=["ESPAÑA","FRANCIA","MEXICO"]
+miDiccionario{mitupla[0]:"Madrid",miTupla[1]:"Paris"}
+----------------------------------------------------------------------
+DICCIONARIO ALMACENE UNA TUPLA 
+
+miDiccionario{"años":[1991,1992,1993]}
+----------------------------------------------------------------------
+GUARDAR DICCIONARIO EN OTRO DICCIONARIO
+
+miDiccionario{"años":{1991,1992,1993}}
+----------------------------------------------------------------------
+miDiccionario.keys() ------> devuelve las claves del diccionario 
+miDiccionario.values() ---> devuelve los valores de las claves
+len(miDiccionario)--------> devuelva LA longitud del diccionario 
+-------------------------------------------------------------------------------------------------------------------
+CONDICIONALES 
+
+if num<5:
+    variable="si"
+
+Es importante dejar la sangria para inidicar que son instrucciones del if 
+-----------------------------------------------------------------------------
+INPUT()
+
+Sirve para recibir datos por teclado
+
+entrada=input()   ------------> este metodo input recibe un string como entrada 
+
+Puede recibir parametros input("Introduce algo")
+------------------------------------------------------------------------------
+TRANSFORMAR STRING A ENTERO
+
+int(texto)   ----->transforma a entero un string 
+------------------------------------------------------------------------------
+ELSE Y ELIF
+
+if num<5:
+    instruccion 
+elif num2>7:
+    instruccion
+else:
+    instruccion 
+-------------------------------------------------------------
+SWITCH 
+
+No existe la instruccion switch en python 
+
+En python se pueden concatenar operadores de comparacion
+-------------------------------------------------------------
+CONCATENACION DE OPERADORES
+
+edad 7
+
+if 0<edad<100:
+    instruccion
+else:
+    instruccion 
+
+El flujo de ejecucion es de izquierda a derecha
+------------------------------------------------------------
+CONVERTIR A STRING 
+
+str(variable)
+------------------------------------------------------------
+AND y OR 
+
+if a<1 and b>2 or c>3:
+    instruccion 
+------------------------------------------------------------
+IN 
+
+If asignatura in ("informatica", "Software"):
+    Instruccion 
+
+Es case sensitive
+------------------------------------------------------------
+lower() upper()
+
+Transforman a minusculas o mayusculas una cadena 
+
+a=b.lower();
+a=b.upper();
+------------------------------------------------------------
+BUCLES FOR DETERMINADO
+
+for variable in elemento a recorrer:
+
+for i in [1,2,3]:
+    print("Hola")
+
+Esto ejecutaria 3 veces el print ya que recorre la lista 
+--------
+for i in [1,2,3]:
+    print(i)
+
+Imprimira el valor de i que va en el B
+------------------------------------------------------------
+for i in [1,2,3]:
+    print(i, end"") 
+
+con esto le decimos que no imprima con salto de linea
+------------------------------------------------------------
+For i in "jorge":
+    print(i)
+
+imprime cada letra de la cadena 
+------------------------------------------------------------
+RANGE 
+
+for i in range(5):
+    print("Hola")
+
+esto imprimira hola 5 veces 
+-----------------------------------------------------------
+for i in range[5]
+    print(f"Valor de la variable" {i})
+
+Esto concatena la variable con el texto, la f es necesaria para que python sepa que es una notacion especial 
+-----------------------------------------------------------
+LEN
+
+len("Juan")  ----> devuelve 4
+------------------------------------------------------------------------------------
+BUCLE WHILE
+
+while i<10:
+    instruccion 
+------------------------------------------------------------------------------------
+CONTINUE, PASS Y ELSE 
+
+continue: ignora una vuelta del bucle y salta a la siguiente
+pass: el bucle devuelve null si se usa esto 
+else: es como en el condicional pero en bucles, este entra una vez que el bucle termino 
+------------------------------------------------------------------------------------
+GENERADORES
+
+Son estructuras que extraen valores de una funcion y se almaacenan en objetos iterables
+
+def funcion():
+    instrucciones
+
+    yield Numericos
+
+La diferencia con las funciones es que la funcion te devuelve todos los valores de golpe y con  el yield te devuelve de uno en uno cada vez que la mandes a llamar 
+
+Se utilizan con listas de vlores infinitos y son mas eficientes que las funciones tradicionales
+------------------------------------------------------------------------------------
+NEXT()
+
+sirve para los generadores next(variableAlmacenaYield)
+-------------------------------------------------------------------------------------
+YIELD FROM 
+
+Sirve para simplificar codigo si se usan bucles anidados 
+
+def devuelve_ciudades(*ciudades):
+    for elemento in ciudades:
+        for subelemento in elemento:
+            yield subelemento
+
+Este es un ciclo anidado y se sustituye con:
+
+def devuelve_ciudades(*ciudades):
+    for elemento in ciudades:
+            yield from elemento 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
