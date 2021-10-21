@@ -339,6 +339,113 @@ Este es un ciclo anidado y se sustituye con:
 def devuelve_ciudades(*ciudades):
     for elemento in ciudades:
             yield from elemento 
+-------------------------------------------------------------------------------------
+EXCEPCIONES
+
+Es un error en tiempo de ejecucion, la excepcion sirve para que el programa no pare la ejecucion por este error.
+
+
+def divide(num1,num2):
+
+    try:
+        return num1/num2
+    except ZeroDivisionError:
+        print("No se puede dividir entre 0)
+        return "Operacion erronea"
+---------------------------------------------
+Se pueden poner varios excepts en cada try 
+
+    try:
+        return num1/num2
+    except ZeroDivisionError:
+        print("No se puede dividir entre 0)
+        return "Operacion erronea"
+    except ValueError:
+        print("El valor introducido es incorrecto")
+    finally:
+        lo que pongas aqui se va a ejecutar siempre, ocurra un error o no 
+---------------------------------------------
+RAISE EN EXCEPCIONES
+
+if edad<0:
+    raise TypeError("No se permiten edades negativas")
+---------------------------------------------
+MODULOS 
+
+Son un archivo con extension .py o .pyc o archivo escrito en C par aCPython. Poseen su propio espacio de nombres y puede tener variables, funciones, clases o otros modulos.
+
+Sirve para organizar y reutilizar codigo.
+
+import nombre_del_archivo_a_llamar
+
+nombre_del_archivo_a_llamar.sumar(1,2)
+
+---------------------------------
+
+Para evitar escribir el nombre del archivo cada que mandemos llamar una funcion:
+
+from nombre_archivo import sumar 
+
+sumar(7,5)
+----------------------------------
+Pra importar todas las funicones de un archivo:
+
+from archivo import *
+-------------------------------------------------------------------------------
+PAQUETES 
+
+Directorios donde se alamacenaran modulos relacionados entre si 
+
+solo hay que crear una carpeta con un archivo __init__.py
+
+para mandar llamar algo de un paquete la sintaxis es:
+
+from paquete.archivo import *
+--------------------------------------------------------------------------------
+PAQUETES DISTRIBUIBLES 
+
+Para distribuir paquetes de otras carpetas diferentes al proyecto. 
+
+En la raiz del proyecto se crea un archivo llamado "setup.py" y ese archivo lleva lo siguiente:
+
+---------------------------------
+
+from setuptools import setup 
+
+setup(
+    name="paquetecalculos",
+    version="1.0",
+    description="Explicar que hace este paquete",
+    autor="Juan",
+    author_email="email"
+    url="url"
+    packages="ruta donde se encuentra el paquete que se quiere empaquetar"
+
+)
+
+despues tenemos que ir a la ruta de la carpeta desde cmd y escribir:
+
+python setup.py sdist
+
+esto genera 2 carpetas para el paquete y en uno viene un tar comprimido 
+
+Para instalar este paquete, desde la consola debes ir al directorio donde lo quieras poner y poner en cmd:
+pip3 install paquete.tar.gz
+
+AL MOMENTO DE IMPORTAR EL PAQUETE O LAS FUNCIONES DEL PAQUETE, FORMA PARTE YA DEL PYTHON DESDE EL SO POR LO QUE SE PODRIA LLAMAR DESDE CUALQUIER ARCHIVO 
+----------------------------------------------------------------------------------
+ARCHIVOS EXTERNOS 
+
+El ciclo de vida de un archivo es:
+
+CREACION-->APERTURA--->MANIPULACION--->CIERRE
+
+---------------------
+EJEMPLO ARCHIVOS 
+
+from io import open 
+
+
 
 
 
