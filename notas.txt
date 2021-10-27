@@ -444,6 +444,215 @@ CREACION-->APERTURA--->MANIPULACION--->CIERRE
 EJEMPLO ARCHIVOS 
 
 from io import open 
+archivo_textto=open("Nombre archivo a abrir","modo en el que se abrira")    ------>el modo puede ser lectura,escritura y append 
+archivo_texto=open("archivo.txt","w")
+frase="Buen dia para estudiar python \n el Miercoles"
+archivo_texto.write(frase)
+archivo_texto.close
+
+-----------------------------
+ABRIR EN MODO LECTURA
+
+from io import open 
+archivo_texto=open("archivo.txt","r")
+texto=archivo_texto.read()
+archivo_texto.close
+----------------------------
+LEER LINEA POR LINEA DEL ARCHIVO Y GUARDARLO EN UNA LISTA 
+
+from io import open 
+archivo_texto=open("archivo.txt","r")
+linea_texto=archivo_texto.readlines()   ----> lineas texto sería una lista 
+archivo_texto.close
+---------------------------
+Agregar una nueva linea (Append)
+
+from io import open 
+archivo_texto=open("archivo.txt","a")
+texto=archivo_texto.write("\n nueva linea")   
+archivo_texto.close
+------------------------------------------------------------------------------------------
+PUNTEROS EN PYTHON 
+
+Cuando abrimos un archivo nos puede permitir en donde situar el cursor al abrir un archivo 
+
+seek(5)   ---->le dices al puntero que se ponga en la posicion 5
+
+archivo.seek(0)
+
+------------------------------------------------------------------------------------------
+Serialización
+
+Consiste en guardar en un fichero externo en codigo binario, una coleccion o un objeto.
+
+Ejemplo: si se quiere distribuir un diccionario se debe codificar en binario si se quiere tener mayor optimizacion
+
+Se necesita la biblioteca "Pickle" que tiene los metodos:
+dump():volcado de dato al fichero binario externo
+load():carga de datos del fichero binario externo 
+
+
+PARA CREARLO
+
+lista=[]
+fichero_binario=open("lista","wb")
+Pickle.dump(lista, fichero_binario)
+fichero_binario.close()
+
+PARA LEERLO
+
+fichero=open("lista","rb")
+lista=Pickle.load(fichero)
+
+-------------------------------------------------------------------------------------
+BASES DE DATOS 
+
+Puede manipular, SQL Server, Oracle, Mysql, PostgreSQL 
+
+PASOS:
+1.-Abrir-crear una conexion 
+2.-Crear puntero 
+3.-Ejecutar Query
+4.-Manejar los resultados de la consulta
+5.-Cerrar puntero 
+6.-Cerrar conexion 
+--------------------------------------------
+EJEMPLO SQLITE
+
+import sqlite3 
+
+miConexion=sqlite3.connect("Base de ejemplo")
+miCursor=miConexion.cursor()
+miCursor.execute("CREATE TABLE PRODUCTOS (NOMBRE_ARTICULO) VARCHAR(50), PRECIO INTEGER, SECCION VARCHAR(20)")
+miCursor.execute("INSERT INTO PRODUCTOS VALUES('BALÓN',100,'DEPORTES')")
+miConexion.commit()   ---------> esta linea es para confirmar que queremos ejecutar los cambios dichos en execute 
+miConexion.close()
+--------------------------------------------
+EJEMPLO LISTAS Y TUPLAS PARA INSERTAR REGISTROS
+
+varioProductos=[
+    ("Camiseta", 10, "Deportes")
+    ("Jarron",90,"Ceramica")
+]
+
+miCursor.executemany("INSERT INTO PRODUCTOS VALUES (?,?,?))", varioProductos)
+miConexion.commit()
+
+PARA LEER UNA BD Y VACIARLA EN UNA LISTA 
+
+miCursor.execute("SELECT * FROM PRODUCTOS")
+varioProductos=miCursor.fetchall()
+-----------------------------------------------
+CLAVES PRINCIPALES EN BD 
+
+miCursor.execute('''
+    CREATE TABLE PRODUCTOS(
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    NOMBRE_ARTICULO VARCHAR(50),
+    PRECIO INTEGER,
+    SECCION VARCHAR(20)    
+    )
+''')
+
+miCursor.executemany("INSERT INTO PRODUCTOS VALUES (NULL,?,?,?))", varioProductos) ---> el null para el id autoincrementable
+---------------------------------------------------------------------
+FUNCIONES LAMBDA
+
+ Es una funcion anonima y sirve para ahorrar tiempo.
+
+ area_triangulo=lambda base,altura:(bse*altura)/2      --->solo pueden devolver un calculo y no hacer ciclos ni CONDICIONALES
+
+-------------------------------------------------------------------------
+FUNCION FILTER
+
+Devuelve los elementos que cumplen una caracteristica 
+
+def numero_par(num):
+
+if num % 2==0:
+    return true
+
+
+numeros=[1,2,3,4,5,6]
+
+print(list(filter(numero_par, numeros)))
+----------------------------------------------------------------------------
+FUNCION MAP 
+
+Aplica una funcion a cada elemento de una lista iterable devolviendo una lista con resultados 
+
+def calculo_comision(empleado):
+    empleado.salario=empleado.salario*1.03
+    return empleado
+
+listaEmpleados=map(calculo_comision, listaEmpleados)
+
+---------------------------------------------------------------------------------------
+EXPRESIONES REGULARES 
+
+Sirven para el trabajo y procesamiento de texto.
+
+Busca un texto que se ajusta a un formato DETERMINADO
+buscar si existe o no una cadena dentro de un texto 
+contar el numero de coincidencias dentro de un texto 
+
+------------------------------------------
+import re 
+
+cadena="Vamos a aprender expresiones regulares"
+
+print(re.search("aprender", cadena))     ----> va a buscar la palabra aprender en la cadena, devuelve un objeto con matched y si no está devuelve none 
+-------------
+
+textoEncontrado=re.search("aprender", cadena)
+print(textoEncontrado.start()) ---------------------->devuelve el caracter donde comienza el texto en la cadena 
+print(textoEncontrado.end()) ----------------------> devuelve el caracter donde finaliza el texto en la cadena 
+print(textoEncontrado.end()) ----------------------> devuelve donde empieza y termina 
+
+re.findall(textoABuscar, cadena)  ------> devuelve una lista con todos los strings que coinciden con la busqueda 
+
+-------------------------------------------------------
+METACARACTERES(anclas)
+
+lista=["Jorge","Karla","Edgar"]
+
+for e in lista[]:
+
+if re.findall('^Sandra',lista):    -------------> ^ este metacaracter es para que devuelva todos los que comienza por Sandra
+
+if re.findall('Jorge$', elemento)  -------------> $ este metacaracter es para que devuelva los que terminan en Jorge 
+
+                                   -------------> [sfg]  con los corchetes sirven para saber si esos caracteres estan en una cadena sin importar el orden 
+                                   -------------> 'niñ[oa]s' te devolveria tanto niños como niñas ya que la a y la o estan dentro de los corchetes 
+
+ -------------------------------------------------------------
+ RANGOS
+
+[o-t]  -----> nos devuelvelos elementos de la lista que tengan letras entre la o y la t 
+[^o-t]  -----> es el complemento, todos los que no estan en el rango de o a t
+[o-t1-3] ----> en el rango o a t y luego en el rango 1 a 3 
+
+----------------------------------------------------------------
+MATCH 
+
+busca un match con un elemento que empieze segun el parametro de match 
+
+if re.match("Jorge",nombre, re.IGNORECASE):
+
+".ara"---------->expresion regular para todos los que empiezan por cualquier letra y terminan en ara
+
+search ---> es como match pero en vez de solo buscar en el inicio de la cadena, busca en toda la cadena 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
